@@ -17,18 +17,34 @@
                 <td>@item.Id</td>
                 <td>@item.TaskContent</td>
                 <td>@item.TaskDateTime</td>
-               <td>
+                <td>
                     @if (item.Done == true)
                     {
-                      <div class="text-success">انجزت المهمة</div>
+                        <div class="text-success">انجزت المهمة</div>
+
+
+
+                        <form asp-action="UnDoneTask" asp-controller="ToDoTask" method="post">
+                            <input type="hidden" name="Id" value="@item.Id" />
+
+                            <button type="submit" class="btn btn-danger">UnDone</button>
+                        </form>
                     }
-                    else if (item.Done==false)
+                    else if (item.Done == false)
                     {
                         <div class="text-danger">لم تنجز المهمة</div>
+
+
+
+                        <form asp-action="DoneTask" asp-controller="ToDoTask" method="post">
+                            <input type="hidden" name="Id" value="@item.Id" />
+
+                            <button type="submit" class="btn btn-primary">Done</button>
+                        </form>
                     }
-                    
-               </td>
-                
+
+                </td>
+
             </tr>
         }
     </tbody>

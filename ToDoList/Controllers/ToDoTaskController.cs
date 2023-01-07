@@ -41,11 +41,32 @@ namespace ToDoList.Controllers
             {
                 _toDoTaskDomain.Insert(todoTask);
                 ViewBag.TaskDate = todoTask.TaskDateTime;
-                return RedirectToAction("MyTasks", "ToDoTask"); 
+                return RedirectToAction("MyTasks", "ToDoTask");
             }
 
             return View(todoTask);
         }
 
+        [HttpPost]
+        public IActionResult DoneTask(int id)
+        {
+            // update in database
+            var task = _toDoTaskDomain.GetById(id);
+            task.Done = true;
+            _toDoTaskDomain.Update(task);
+            // redirect to ( MyTasks )
+            return RedirectToAction("MyTasks", "ToDoTask");
+
+
+        }
+        [HttpPost]
+        public IActionResult UnDoneTask(int id)
+        {
+            
+            var task=_toDoTaskDomain.GetById(id);
+            task.Done = false;
+            _toDoTaskDomain.Update(task);
+            return RedirectToAction("MyTasks", "ToDoTask");
+        }
     }
 }

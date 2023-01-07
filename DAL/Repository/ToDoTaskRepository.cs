@@ -45,5 +45,11 @@ namespace DAL.Repository
             var todoTask = _db.TodoTasks.ToList();
             return todoTask; 
         }
+
+        public TodoTask GetById(int id)
+        {
+            var todoTask = _db.TodoTasks.Where(e => e.Id == id).AsNoTracking().FirstOrDefault();
+            return todoTask;
+        }
     }
 }

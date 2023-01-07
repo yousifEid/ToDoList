@@ -31,5 +31,10 @@ namespace BLL.Domains
         {
             return _toDoTaskRepository.GetAll();
         }
+
+        public TodoTask GetById(int id)
+        {
+            return _toDoTaskRepository.GetById(id);
+        }
     }
 }
