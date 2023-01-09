@@ -68,5 +68,11 @@ namespace ToDoList.Controllers
             _toDoTaskDomain.Update(task);
             return RedirectToAction("MyTasks", "ToDoTask");
         }
+        [HttpGet]
+        public IActionResult DeleteToDoTask(int id)
+        {
+             _toDoTaskDomain.Delete(id);
+            return RedirectToAction("MyTasks", "ToDoTask");
+        }
     }
 }

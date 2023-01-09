@@ -7,6 +7,7 @@
             <th>TaskContent</th>
             <th>TaskDateTime</th>
             <th>Done</th>
+            <th></th>
         </tr>
     </thead>
 
@@ -27,7 +28,7 @@
                         <form asp-action="UnDoneTask" asp-controller="ToDoTask" method="post">
                             <input type="hidden" name="Id" value="@item.Id" />
 
-                            <button type="submit" class="btn btn-danger">UnDone</button>
+                            <button type="submit" class="btn btn-secondary">UnDone</button>
                         </form>
                     }
                     else if (item.Done == false)
@@ -43,8 +44,12 @@
                         </form>
                     }
 
+
                 </td>
 
+                <td>
+                    <a class="btn btn-danger" asp-action="DeleteToDoTask" asp-route-id="@item.Id">Delete</a>
+                </td>
             </tr>
         }
     </tbody>
